@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Code, Palette, Zap, User, Award, Briefcase, Star, Play, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -26,7 +26,6 @@ const Index = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Handle form submission here
     alert('Thank you for your message! I will get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
   };
@@ -40,16 +39,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white font-poppins">
+    <div className="min-h-screen bg-white font-poppins overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="text-2xl font-bold text-portfolio-primary">
-              Sandipan Naskar
+            <div className="text-2xl font-bold text-gray-900">
+              Sandipan
             </div>
             
-            {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {['Home', 'About', 'Education', 'Experience', 'Skills', 'Services', 'Portfolio', 'Contact'].map((item) => (
                 <button
@@ -62,7 +60,15 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Mobile menu button */}
+            <div className="hidden md:block">
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-full"
+              >
+                Let's Talk
+              </Button>
+            </div>
+
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -73,7 +79,6 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
@@ -93,86 +98,156 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 pb-16 bg-gradient-to-br from-portfolio-light to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="home" className="pt-20 pb-16 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-80"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-orange-400 rounded-lg opacity-70 rotate-45"></div>
+        <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-pink-400 rounded-full opacity-60"></div>
+        <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-green-400 rounded-full opacity-50"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-            <div className="animate-fade-in">
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Hi, I'm{' '}
-                <span className="text-portfolio-primary">Sandipan Naskar</span>
+            <div className="animate-fade-in space-y-6">
+              <div className="text-sm font-medium text-yellow-300 mb-4">👋 Hello, I'm</div>
+              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Sandipan Naskar
+                <span className="block text-2xl lg:text-3xl font-normal text-blue-200 mt-2">
+                  Frontend Developer
+                </span>
               </h1>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+              <p className="text-xl text-blue-100 mb-6 leading-relaxed max-w-lg">
                 Aspiring developer building modern web experiences and Python mini-projects.
-              </p>
-              <p className="text-lg text-gray-500 mb-8 leading-relaxed">
-                Constantly seeking to engage my knowledge to learn something useful and keep challenging myself to be a better performer in accordance to the company's requirements.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
-                  className="bg-portfolio-primary hover:bg-portfolio-primary/90 text-white px-8 py-3"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-full font-semibold"
                   onClick={() => scrollToSection('portfolio')}
                 >
                   View Portfolio
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white px-8 py-3"
+                  className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 rounded-full font-semibold"
                   onClick={() => scrollToSection('contact')}
                 >
-                  Contact Me
+                  <Play className="mr-2 h-4 w-4" />
+                  Watch Intro
                 </Button>
               </div>
             </div>
             <div className="animate-slide-in-right">
               <div className="relative">
-                <div className="w-80 h-80 lg:w-96 lg:h-96 mx-auto bg-gradient-to-br from-portfolio-primary to-portfolio-secondary rounded-full flex items-center justify-center text-white text-8xl font-bold">
+                <div className="w-80 h-80 lg:w-96 lg:h-96 mx-auto bg-gradient-to-br from-yellow-400 via-orange-400 to-red-500 rounded-full flex items-center justify-center text-white text-8xl font-bold shadow-2xl">
                   SN
                 </div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-portfolio-secondary rounded-full opacity-20"></div>
-                <div className="absolute -top-4 -left-4 w-16 h-16 bg-portfolio-primary rounded-full opacity-30"></div>
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-pink-400 rounded-full opacity-80"></div>
+                <div className="absolute -top-6 -left-6 w-16 h-16 bg-green-400 rounded-lg opacity-70 rotate-12"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Expertise Services! Let's check it out</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Learn more about my background and interests
+              Quality delivers all things at cheap rate. Lorem ipsum dolor sit amet, consectetur adipiscing lorem magna magna dolere tempor magna tempor aliquyam.
             </p>
           </div>
-          
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Code className="w-8 h-8" />
+                </div>
+                <CardTitle className="text-xl">UI UX Design</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-purple-100">
+                  Creating beautiful and functional user interfaces with modern design principles and user experience best practices.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Palette className="w-8 h-8" />
+                </div>
+                <CardTitle className="text-xl">Webflow Develop</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-blue-100">
+                  Design and develop modern, responsive websites using HTML, CSS, and JavaScript with cutting-edge frameworks.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-8 h-8" />
+                </div>
+                <CardTitle className="text-xl">Product Design</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-indigo-100">
+                  Build interactive command-line tools and games like Tic-Tac-Toe using Python and modern development practices.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-portfolio-primary to-portfolio-secondary rounded-full flex items-center justify-center text-white text-6xl font-bold mb-8">
+            <div className="relative">
+              <div className="w-80 h-80 mx-auto bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white text-6xl font-bold relative overflow-hidden">
                 SN
+                <div className="absolute top-4 right-4 w-8 h-8 bg-white/30 rounded-full"></div>
+                <div className="absolute bottom-6 left-6 w-6 h-6 bg-white/20 rounded-full"></div>
               </div>
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-500 rounded-lg opacity-70 rotate-12"></div>
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-pink-500 rounded-full opacity-60"></div>
             </div>
+            
             <div className="space-y-6">
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <div className="text-sm font-medium text-purple-600 mb-4">ABOUT ME</div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Designing Solutions, Not Just Visuals
+              </h2>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
                 Constantly seeking to engage my knowledge to learn something useful and keep challenging myself to be a better performer in accordance to the company's requirements.
               </p>
               
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Location</h4>
-                  <p className="text-gray-600">Kolkata, India</p>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                  <span className="text-gray-700"><strong>50 Complete Project</strong> - Various web development and Python projects completed successfully</span>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Languages</h4>
-                  <p className="text-gray-600">English, Bengali, Hindi</p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span className="text-gray-700"><strong>3+ Years Experience</strong> - Continuous learning and development in programming</span>
                 </div>
               </div>
-              
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Interests</h4>
-                <p className="text-gray-600">Playing cricket and football, listening to music</p>
+
+              <div className="pt-6">
+                <Button 
+                  onClick={() => scrollToSection('portfolio')}
+                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-full font-semibold"
+                >
+                  Download Resume
+                </Button>
               </div>
             </div>
           </div>
@@ -180,7 +255,7 @@ const Index = () => {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20 bg-white">
+      <section id="education" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Education</h2>
@@ -188,37 +263,43 @@ const Index = () => {
           </div>
 
           <div className="space-y-8">
-            <Card className="border-l-4 border-l-portfolio-primary">
+            <Card className="border-l-4 border-l-purple-500 hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-xl">Heritage Institute of Technology</CardTitle>
+                <CardTitle className="text-xl flex items-center">
+                  <Award className="mr-3 text-purple-500" />
+                  Heritage Institute of Technology
+                </CardTitle>
                 <CardDescription className="text-lg">B.Tech in Computer Science and Engineering</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex justify-between items-center">
                   <p className="text-gray-600">2021 – 2025</p>
-                  <Badge variant="secondary" className="bg-portfolio-primary/10 text-portfolio-primary">
+                  <Badge className="bg-purple-100 text-purple-700">
                     CGPA: 7.71
                   </Badge>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-l-4 border-l-portfolio-secondary">
+            <Card className="border-l-4 border-l-blue-500 hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-xl">EL-Bethel School</CardTitle>
+                <CardTitle className="text-xl flex items-center">
+                  <Award className="mr-3 text-blue-500" />
+                  EL-Bethel School
+                </CardTitle>
                 <CardDescription className="text-lg">Higher Secondary Education</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex justify-between items-center">
                     <p className="text-gray-600">ISC – 2021</p>
-                    <Badge variant="secondary" className="bg-portfolio-secondary/10 text-portfolio-secondary">
+                    <Badge className="bg-blue-100 text-blue-700">
                       81.33%
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-gray-600">ICSE – 2019</p>
-                    <Badge variant="secondary" className="bg-portfolio-secondary/10 text-portfolio-secondary">
+                    <Badge className="bg-blue-100 text-blue-700">
                       82.16%
                     </Badge>
                   </div>
@@ -230,23 +311,35 @@ const Index = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 bg-gray-50">
+      <section id="experience" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Experience</h2>
             <p className="text-xl text-gray-600">Professional experience and achievements</p>
           </div>
 
-          <Card className="border-l-4 border-l-portfolio-primary">
+          <Card className="border-l-4 border-l-yellow-500 hover:shadow-lg transition-shadow">
             <CardHeader>
-              <CardTitle className="text-xl">Intern, Euphoria GenX</CardTitle>
+              <CardTitle className="text-xl flex items-center">
+                <Briefcase className="mr-3 text-yellow-500" />
+                Intern, Euphoria GenX
+              </CardTitle>
               <CardDescription className="text-lg">June 2024 – July 2024</CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-gray-700">
-                <li>• Hands-on experience with engineering tools</li>
-                <li>• Developed an e-learning platform</li>
-                <li>• Used HTML, CSS, JavaScript for daily report visualization</li>
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3"></div>
+                  Hands-on experience with engineering tools
+                </li>
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3"></div>
+                  Developed an e-learning platform
+                </li>
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3"></div>
+                  Used HTML, CSS, JavaScript for daily report visualization
+                </li>
               </ul>
             </CardContent>
           </Card>
@@ -254,7 +347,7 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-white">
+      <section id="skills" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills</h2>
@@ -262,75 +355,50 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card>
+            <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-lg text-portfolio-primary">Languages</CardTitle>
+                <CardTitle className="text-lg text-purple-600 flex items-center">
+                  <Code className="mr-2" />
+                  Languages
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary">Python</Badge>
-                  <Badge variant="secondary">Java</Badge>
+                  <Badge className="bg-purple-100 text-purple-700">Python</Badge>
+                  <Badge className="bg-purple-100 text-purple-700">Java</Badge>
                 </div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-lg text-portfolio-primary">Web Technologies</CardTitle>
+                <CardTitle className="text-lg text-blue-600 flex items-center">
+                  <Palette className="mr-2" />
+                  Web Technologies
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary">HTML</Badge>
-                  <Badge variant="secondary">CSS</Badge>
-                  <Badge variant="secondary">JavaScript</Badge>
+                  <Badge className="bg-blue-100 text-blue-700">HTML</Badge>
+                  <Badge className="bg-blue-100 text-blue-700">CSS</Badge>
+                  <Badge className="bg-blue-100 text-blue-700">JavaScript</Badge>
                 </div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-lg text-portfolio-primary">Concepts</CardTitle>
+                <CardTitle className="text-lg text-indigo-600 flex items-center">
+                  <Zap className="mr-2" />
+                  Concepts
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary">Data Structures</Badge>
-                  <Badge variant="secondary">OS</Badge>
-                  <Badge variant="secondary">DBMS</Badge>
+                  <Badge className="bg-indigo-100 text-indigo-700">Data Structures</Badge>
+                  <Badge className="bg-indigo-100 text-indigo-700">OS</Badge>
+                  <Badge className="bg-indigo-100 text-indigo-700">DBMS</Badge>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Services</h2>
-            <p className="text-xl text-gray-600">What I can help you with</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl text-portfolio-primary">Front-End Web Development</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700">
-                  Design and develop modern, responsive websites using HTML, CSS, and JavaScript.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl text-portfolio-primary">Python Mini Projects/Game Development</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700">
-                  Build interactive command-line tools and games like Tic-Tac-Toe using Python.
-                </p>
               </CardContent>
             </Card>
           </div>
@@ -341,170 +409,203 @@ const Index = () => {
       <section id="portfolio" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Portfolio</h2>
+            <div className="text-sm font-medium text-purple-600 mb-4">PORTFOLIO</div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Digital Product Showcases</h2>
             <p className="text-xl text-gray-600">Some of my recent projects</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="group hover:shadow-xl transition-all duration-300">
-              <CardHeader>
-                <div className="flex justify-between items-start">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="group hover:shadow-2xl transition-all duration-300 overflow-hidden">
+              <div className="bg-gradient-to-br from-purple-500 to-blue-600 p-8 text-white">
+                <div className="flex justify-between items-start mb-4">
                   <div>
-                    <CardTitle className="text-xl text-portfolio-primary">EDUVERSE</CardTitle>
-                    <CardDescription className="text-lg mt-2">E-learning Platform</CardDescription>
+                    <CardTitle className="text-2xl mb-2">EDUVERSE</CardTitle>
+                    <CardDescription className="text-purple-100">E-learning Platform</CardDescription>
                   </div>
-                  <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-portfolio-primary transition-colors" />
+                  <ExternalLink className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 mb-4">
-                  E-learning platform with course and tutorial access.
+                <p className="text-purple-100 mb-6">
+                  E-learning platform with course and tutorial access. Built with modern web technologies.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-portfolio-primary/10 text-portfolio-primary">HTML</Badge>
-                  <Badge className="bg-portfolio-primary/10 text-portfolio-primary">CSS</Badge>
-                  <Badge className="bg-portfolio-primary/10 text-portfolio-primary">JavaScript</Badge>
+                  <Badge className="bg-white/20 text-white">HTML</Badge>
+                  <Badge className="bg-white/20 text-white">CSS</Badge>
+                  <Badge className="bg-white/20 text-white">JavaScript</Badge>
                 </div>
-              </CardContent>
+              </div>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300">
-              <CardHeader>
-                <div className="flex justify-between items-start">
+            <Card className="group hover:shadow-2xl transition-all duration-300 overflow-hidden">
+              <div className="bg-gradient-to-br from-orange-500 to-red-600 p-8 text-white">
+                <div className="flex justify-between items-start mb-4">
                   <div>
-                    <CardTitle className="text-xl text-portfolio-secondary">TIC-TAC-TOE GAME</CardTitle>
-                    <CardDescription className="text-lg mt-2">Python Game</CardDescription>
+                    <CardTitle className="text-2xl mb-2">TIC-TAC-TOE GAME</CardTitle>
+                    <CardDescription className="text-orange-100">Python Game</CardDescription>
                   </div>
-                  <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-portfolio-secondary transition-colors" />
+                  <ExternalLink className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 mb-4">
-                  Python-based two-player terminal game.
+                <p className="text-orange-100 mb-6">
+                  Python-based two-player terminal game with intelligent gameplay mechanics.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-portfolio-secondary/10 text-portfolio-secondary">Python</Badge>
+                  <Badge className="bg-white/20 text-white">Python</Badge>
                 </div>
-              </CardContent>
+              </div>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      {/* Testimonials Section */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-            <p className="text-xl text-gray-600">Let's work together on your next project</p>
+            <div className="text-sm font-medium text-purple-600 mb-4">TESTIMONIALS</div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">What People Say's About Us</h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex mb-4">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4">
+                    "Exceptionally professional and delivers quality work. Sandipan's attention to detail and technical skills are impressive."
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+                    <div>
+                      <p className="font-semibold text-gray-900">Client Name</p>
+                      <p className="text-sm text-gray-600">Position, Company</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white relative overflow-hidden">
+        <div className="absolute top-10 left-10 w-16 h-16 bg-yellow-400 rounded-full opacity-60"></div>
+        <div className="absolute bottom-20 right-20 w-12 h-12 bg-pink-400 rounded-lg opacity-50 rotate-45"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+              <div className="text-sm font-medium text-yellow-300 mb-4">GOT A PROJECT? LET'S TALK</div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                Ready to bring your ideas to life?
+              </h2>
+              <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                Let's work together on your next project and create something amazing.
+              </p>
               
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-portfolio-primary" />
-                  <a href="mailto:sandipannaskar74@gmail.com" className="text-gray-700 hover:text-portfolio-primary transition-colors">
+                  <Mail className="w-5 h-5 text-yellow-400" />
+                  <a href="mailto:sandipannaskar74@gmail.com" className="text-blue-100 hover:text-white transition-colors">
                     sandipannaskar74@gmail.com
                   </a>
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-portfolio-primary" />
-                  <a href="tel:6290410080" className="text-gray-700 hover:text-portfolio-primary transition-colors">
+                  <Phone className="w-5 h-5 text-yellow-400" />
+                  <a href="tel:6290410080" className="text-blue-100 hover:text-white transition-colors">
                     6290410080
                   </a>
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Linkedin className="w-5 h-5 text-portfolio-primary" />
+                  <Linkedin className="w-5 h-5 text-yellow-400" />
                   <a 
                     href="https://linkedin.com/in/sandipan-naskar" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-portfolio-primary transition-colors"
+                    className="text-blue-100 hover:text-white transition-colors"
                   >
                     linkedin.com/in/sandipan-naskar
                   </a>
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Github className="w-5 h-5 text-portfolio-primary" />
+                  <Github className="w-5 h-5 text-yellow-400" />
                   <a 
                     href="https://github.com/Sandipan-Naskar" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-portfolio-primary transition-colors"
+                    className="text-blue-100 hover:text-white transition-colors"
                   >
                     github.com/Sandipan-Naskar
                   </a>
                 </div>
               </div>
+
+              <Button 
+                onClick={() => scrollToSection('home')}
+                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-full font-semibold"
+              >
+                Start a Project
+              </Button>
             </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={4}
-                      className="mt-1"
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-portfolio-primary hover:bg-portfolio-primary/90"
-                  >
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            <div className="relative">
+              <div className="w-80 h-80 mx-auto bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-gray-900 text-6xl font-bold">
+                SN
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-pink-400 rounded-full opacity-70"></div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
+      <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Sandipan</h3>
+              <p className="text-gray-400">
+                Building modern web experiences and innovative solutions.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <div className="space-y-2">
+                <button onClick={() => scrollToSection('home')} className="block text-gray-400 hover:text-white transition-colors">Home</button>
+                <button onClick={() => scrollToSection('about')} className="block text-gray-400 hover:text-white transition-colors">About</button>
+                <button onClick={() => scrollToSection('services')} className="block text-gray-400 hover:text-white transition-colors">Services</button>
+                <button onClick={() => scrollToSection('portfolio')} className="block text-gray-400 hover:text-white transition-colors">Portfolio</button>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Services</h4>
+              <div className="space-y-2 text-gray-400">
+                <p>Web Development</p>
+                <p>UI/UX Design</p>
+                <p>Python Development</p>
+                <p>Game Development</p>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <div className="space-y-2 text-gray-400">
+                <p>Kolkata, India</p>
+                <p>sandipannaskar74@gmail.com</p>
+                <p>+91 6290410080</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 pt-8 text-center">
             <p className="text-gray-400">
               © 2024 Sandipan Naskar. All rights reserved.
             </p>
