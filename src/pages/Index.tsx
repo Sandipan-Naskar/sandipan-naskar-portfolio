@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Code, Palette, Zap, User, Award, Briefcase, Star, Play, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Code, Palette, Zap, User, Award, Briefcase, Star, Play, ArrowRight, Download, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -44,7 +44,7 @@ const Index = () => {
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               Sandipan
             </div>
             
@@ -53,9 +53,10 @@ const Index = () => {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-gray-700 hover:text-portfolio-primary transition-colors duration-200 font-medium"
+                  className="text-gray-700 hover:text-purple-600 transition-all duration-200 font-medium relative group"
                 >
                   {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
             </div>
@@ -63,7 +64,7 @@ const Index = () => {
             <div className="hidden md:block">
               <Button 
                 onClick={() => scrollToSection('contact')}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-full"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Let's Talk
               </Button>
@@ -72,7 +73,7 @@ const Index = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-portfolio-primary"
+                className="text-gray-700 hover:text-purple-600 transition-colors"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -86,7 +87,7 @@ const Index = () => {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
-                    className="block w-full text-left px-3 py-2 text-gray-700 hover:text-portfolio-primary transition-colors duration-200"
+                    className="block w-full text-left px-3 py-2 text-gray-700 hover:text-purple-600 transition-colors duration-200"
                   >
                     {item}
                   </button>
@@ -97,56 +98,167 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="pt-20 pb-16 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-80"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-orange-400 rounded-lg opacity-70 rotate-45"></div>
-        <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-pink-400 rounded-full opacity-60"></div>
-        <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-green-400 rounded-full opacity-50"></div>
+      {/* Enhanced Hero Section */}
+      <section id="home" className="pt-20 pb-16 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        {/* Modern floating elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full opacity-20 blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full opacity-20 blur-3xl animate-pulse delay-500"></div>
+        
+        {/* Floating geometric shapes */}
+        <div className="absolute top-32 left-20 w-4 h-4 bg-yellow-400 rounded-full animate-bounce"></div>
+        <div className="absolute top-48 right-32 w-6 h-6 bg-pink-400 rounded-lg rotate-45 animate-bounce delay-300"></div>
+        <div className="absolute bottom-32 right-20 w-3 h-3 bg-green-400 rounded-full animate-bounce delay-700"></div>
+        <div className="absolute top-1/3 left-1/3 w-2 h-2 bg-blue-500 rounded-full animate-ping"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-            <div className="animate-fade-in space-y-6">
-              <div className="text-sm font-medium text-yellow-300 mb-4">👋 Hello, I'm</div>
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Sandipan Naskar
-                <span className="block text-2xl lg:text-3xl font-normal text-blue-200 mt-2">
-                  Frontend Developer
+            <div className="space-y-8 animate-fade-in">
+              {/* Status badge */}
+              <div className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-purple-200 shadow-lg">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                <span className="text-sm font-medium text-gray-700">Available for opportunities</span>
+              </div>
+              
+              {/* Main heading with enhanced typography */}
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2 text-purple-600 font-medium">
+                  <Sparkles className="w-5 h-5" />
+                  <span>Hello, I'm</span>
+                </div>
+                <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+                  <span className="bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent">
+                    Sandipan
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-gray-700 via-purple-700 to-blue-700 bg-clip-text text-transparent">
+                    Naskar
+                  </span>
+                </h1>
+                <div className="flex items-center space-x-3">
+                  <div className="h-1 w-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"></div>
+                  <p className="text-xl lg:text-2xl text-gray-600 font-medium">
+                    Frontend Developer & Python Enthusiast
+                  </p>
+                </div>
+              </div>
+              
+              {/* Enhanced description */}
+              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl">
+                Aspiring developer building modern web experiences and Python mini-projects. 
+                <span className="block mt-2 text-purple-600 font-medium">
+                  Constantly seeking to engage my knowledge to learn something useful and keep challenging myself.
                 </span>
-              </h1>
-              <p className="text-xl text-blue-100 mb-6 leading-relaxed max-w-lg">
-                Aspiring developer building modern web experiences and Python mini-projects.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              
+              {/* Stats cards */}
+              <div className="grid grid-cols-3 gap-4 py-6">
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-purple-100 shadow-lg">
+                  <div className="text-2xl font-bold text-purple-600">50+</div>
+                  <div className="text-sm text-gray-600">Projects</div>
+                </div>
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-blue-100 shadow-lg">
+                  <div className="text-2xl font-bold text-blue-600">3+</div>
+                  <div className="text-sm text-gray-600">Years Learning</div>
+                </div>
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-indigo-100 shadow-lg">
+                  <div className="text-2xl font-bold text-indigo-600">100%</div>
+                  <div className="text-sm text-gray-600">Passion</div>
+                </div>
+              </div>
+              
+              {/* Enhanced CTA buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button 
                   size="lg" 
-                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-full font-semibold"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                   onClick={() => scrollToSection('portfolio')}
                 >
-                  View Portfolio
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <Play className="mr-2 h-5 w-5" />
+                  View My Work
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 rounded-full font-semibold"
+                  className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-2xl font-semibold backdrop-blur-sm bg-white/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                   onClick={() => scrollToSection('contact')}
                 >
-                  <Play className="mr-2 h-4 w-4" />
-                  Watch Intro
+                  <Download className="mr-2 h-5 w-5" />
+                  Download CV
                 </Button>
               </div>
-            </div>
-            <div className="animate-slide-in-right">
-              <div className="relative">
-                <div className="w-80 h-80 lg:w-96 lg:h-96 mx-auto bg-gradient-to-br from-yellow-400 via-orange-400 to-red-500 rounded-full flex items-center justify-center text-white text-8xl font-bold shadow-2xl">
-                  SN
+              
+              {/* Social links */}
+              <div className="flex items-center space-x-4 pt-6">
+                <span className="text-sm text-gray-500 font-medium">Follow me:</span>
+                <div className="flex space-x-3">
+                  <a 
+                    href="https://github.com/Sandipan-Naskar" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-purple-600 hover:scale-110 transition-all duration-300 shadow-lg border border-gray-200"
+                  >
+                    <Github size={18} />
+                  </a>
+                  <a 
+                    href="https://linkedin.com/in/sandipan-naskar" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-blue-600 hover:scale-110 transition-all duration-300 shadow-lg border border-gray-200"
+                  >
+                    <Linkedin size={18} />
+                  </a>
+                  <a 
+                    href="mailto:sandipannaskar74@gmail.com"
+                    className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-red-500 hover:scale-110 transition-all duration-300 shadow-lg border border-gray-200"
+                  >
+                    <Mail size={18} />
+                  </a>
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-pink-400 rounded-full opacity-80"></div>
-                <div className="absolute -top-6 -left-6 w-16 h-16 bg-green-400 rounded-lg opacity-70 rotate-12"></div>
               </div>
             </div>
+            
+            {/* Enhanced profile section */}
+            <div className="animate-slide-in-right">
+              <div className="relative">
+                {/* Main profile circle with gradient border */}
+                <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 rounded-full animate-spin-slow p-1">
+                    <div className="w-full h-full bg-gradient-to-br from-slate-100 to-white rounded-full flex items-center justify-center text-6xl lg:text-7xl font-bold">
+                      <span className="bg-gradient-to-br from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                        SN
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Floating skill badges */}
+                <div className="absolute -top-4 -left-8 bg-white rounded-full px-4 py-2 shadow-lg border border-purple-100 animate-bounce">
+                  <span className="text-sm font-semibold text-purple-600">React</span>
+                </div>
+                <div className="absolute top-20 -right-8 bg-white rounded-full px-4 py-2 shadow-lg border border-blue-100 animate-bounce delay-300">
+                  <span className="text-sm font-semibold text-blue-600">Python</span>
+                </div>
+                <div className="absolute -bottom-4 -right-4 bg-white rounded-full px-4 py-2 shadow-lg border border-indigo-100 animate-bounce delay-500">
+                  <span className="text-sm font-semibold text-indigo-600">JavaScript</span>
+                </div>
+                <div className="absolute bottom-16 -left-6 bg-white rounded-full px-4 py-2 shadow-lg border border-green-100 animate-bounce delay-700">
+                  <span className="text-sm font-semibold text-green-600">HTML/CSS</span>
+                </div>
+                
+                {/* Decorative elements */}
+                <div className="absolute -top-8 left-1/3 w-6 h-6 bg-yellow-400 rounded-lg opacity-80 rotate-12 animate-pulse"></div>
+                <div className="absolute -bottom-8 right-1/4 w-8 h-8 bg-pink-400 rounded-full opacity-70 animate-pulse delay-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-purple-300 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
