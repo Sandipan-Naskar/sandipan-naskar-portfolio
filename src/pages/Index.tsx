@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Code, Palette, Zap, User, Award, Briefcase, Star, Play, ArrowRight, Download, Sparkles, CheckCircle, Globe, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -218,16 +219,18 @@ const Index = () => {
               </div>
             </div>
             
-            {/* Enhanced profile section */}
+            {/* Enhanced profile section with actual image */}
             <div className="animate-slide-in-right">
               <div className="relative">
-                {/* Main profile circle with gradient border */}
+                {/* Main profile circle with gradient border and actual image */}
                 <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 rounded-full animate-spin-slow p-1">
-                    <div className="w-full h-full bg-gradient-to-br from-slate-100 to-white rounded-full flex items-center justify-center text-6xl lg:text-7xl font-bold">
-                      <span className="bg-gradient-to-br from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                        SN
-                      </span>
+                    <div className="w-full h-full bg-gradient-to-br from-slate-100 to-white rounded-full flex items-center justify-center overflow-hidden">
+                      <img
+                        src="https://i.postimg.cc/5yZd7Rh4/Sandipan-Photo-1.jpg"
+                        alt="Sandipan Naskar"
+                        className="w-full h-full object-cover rounded-full"
+                      />
                     </div>
                   </div>
                 </div>
