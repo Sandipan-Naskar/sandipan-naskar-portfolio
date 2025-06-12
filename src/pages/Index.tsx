@@ -372,8 +372,12 @@ const Index = () => {
             <div className="relative group">
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform duration-500"></div>
-                <div className="absolute inset-2 bg-gradient-to-br from-slate-100 to-white rounded-3xl flex items-center justify-center text-6xl lg:text-7xl font-bold text-gray-800 group-hover:scale-105 transition-transform duration-500">
-                  SN
+                <div className="absolute inset-2 bg-gradient-to-br from-slate-100 to-white rounded-3xl flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                  <img
+                    src="https://i.postimg.cc/Wb6hkzQN/Sandipan-Photo.jpg"
+                    alt="Sandipan Naskar"
+                    className="w-full h-full object-cover rounded-3xl"
+                  />
                 </div>
               </div>
               
