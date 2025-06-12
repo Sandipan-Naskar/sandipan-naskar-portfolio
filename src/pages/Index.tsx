@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Code, Palette, Zap, User, Award, Briefcase, Star, Play, ArrowRight, Download, Sparkles, CheckCircle, Globe, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import emailjs from '@emailjs/browser';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +15,7 @@ const Index = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -23,11 +24,31 @@ const Index = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    
+    try {
+      await emailjs.send(
+        'service_lkpfc1r',
+        'template_g7e2cqt',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Sandipan Naskar',
+        },
+        'zZavmPQ9nkOTMMGGy'
+      );
+      
+      alert('Thank you! Your message has been sent successfully.');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      alert('Sorry, there was an error sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -736,7 +757,7 @@ const Index = () => {
         <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-white rounded-full animate-ping"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 mb-8">
                 <Mail className="w-5 h-5 text-yellow-300 mr-2" />
@@ -807,15 +828,70 @@ const Index = () => {
               </Button>
             </div>
 
-            <div className="relative">
-              <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-full rotate-6 animate-pulse"></div>
-                <div className="absolute inset-4 bg-gradient-to-br from-slate-100 to-white rounded-full flex items-center justify-center text-gray-900 text-6xl lg:text-7xl font-bold">
-                  SN
+            {/* Contact Form */}
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
+              <h3 className="text-3xl font-bold mb-8 text-center">Send Me a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-white text-lg">Your Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="bg-white/20 border-white/30 text-white placeholder:text-white/70 focus:border-yellow-400 focus:ring-yellow-400 text-lg p-4 rounded-xl"
+                    placeholder="Enter your name"
+                  />
                 </div>
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-pink-400 rounded-full opacity-70 animate-bounce"></div>
-              <div className="absolute -top-6 -left-6 w-16 h-16 bg-green-400 rounded-2xl opacity-60 animate-pulse"></div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-white text-lg">Your Email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="bg-white/20 border-white/30 text-white placeholder:text-white/70 focus:border-yellow-400 focus:ring-yellow-400 text-lg p-4 rounded-xl"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="message" className="text-white text-lg">Your Message</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={5}
+                    className="bg-white/20 border-white/30 text-white placeholder:text-white/70 focus:border-yellow-400 focus:ring-yellow-400 text-lg p-4 rounded-xl resize-none"
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
+                
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-70 disabled:transform-none"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-gray-900 border-t-transparent rounded-full animate-spin mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="mr-2 h-6 w-6" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
             </div>
           </div>
         </div>
