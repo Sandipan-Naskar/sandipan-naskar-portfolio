@@ -248,7 +248,7 @@ const Index = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 rounded-full animate-spin-slow p-1">
                     <div className="w-full h-full bg-gradient-to-br from-slate-100 to-white rounded-full flex items-center justify-center overflow-hidden">
                       <img
-                        src="https://i.postimg.cc/5yZd7Rh4/Sandipan-Photo-1.jpg"
+                        src="https://i.postimg.cc/Wb6hkzQN/Sandipan-Photo.jpg"
                         alt="Sandipan Naskar"
                         className="w-full h-full object-cover rounded-full"
                       />
