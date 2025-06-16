@@ -468,7 +468,7 @@ const Index = () => {
                     </div>
                   </div>
                   <Badge className="bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 text-lg px-4 py-2">
-                    CGPA: 7.71
+                    DGPA: 7.6
                   </Badge>
                 </div>
               </CardHeader>
