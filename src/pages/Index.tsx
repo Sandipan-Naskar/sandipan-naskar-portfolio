@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Code, Palette, Zap, User, Award, Briefcase, Star, Play, ArrowRight, Download, Sparkles, CheckCircle, Globe, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -673,14 +674,26 @@ const Index = () => {
                     <CardTitle className="text-3xl mb-3 group-hover:scale-105 transition-transform duration-300">EDUVERSE</CardTitle>
                     <CardDescription className="text-purple-100 text-lg">E-learning Platform</CardDescription>
                   </div>
-                  <a 
-                    href="https://github.com/Sandipan-Naskar/EDUVERSE" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:bg-white/30"
-                  >
-                    <ExternalLink className="w-6 h-6" />
-                  </a>
+                  <div className="flex space-x-2">
+                    <a 
+                      href="https://eduverse-seven.vercel.app/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:bg-white/30"
+                      title="Live Demo"
+                    >
+                      <ExternalLink className="w-6 h-6" />
+                    </a>
+                    <a 
+                      href="https://github.com/Sandipan-Naskar/EDUVERSE" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:bg-white/30"
+                      title="View Code"
+                    >
+                      <Github className="w-6 h-6" />
+                    </a>
+                  </div>
                 </div>
                 <p className="text-purple-100 mb-8 leading-relaxed relative z-10">
                   E-learning platform with course and tutorial access. Built with modern web technologies for seamless learning experience.
