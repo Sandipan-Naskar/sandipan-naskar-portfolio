@@ -720,6 +720,36 @@ const Index = () => {
                 </div>
               </div>
             </Card>
+
+            <Card className="group hover:shadow-2xl transition-all duration-500 overflow-hidden bg-gradient-to-br from-white to-green-50/30 border-2 border-green-100 hover:border-green-300">
+              <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-8 text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-12 translate-x-12"></div>
+                <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-10 -translate-x-10"></div>
+                <div className="flex justify-between items-start mb-6 relative z-10">
+                  <div>
+                    <CardTitle className="text-3xl mb-3 group-hover:scale-105 transition-transform duration-300">BUG TRACKING SYSTEM</CardTitle>
+                    <CardDescription className="text-green-100 text-lg">Web Application</CardDescription>
+                  </div>
+                  <a 
+                    href="https://bug-tracking-system-nine.vercel.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:bg-white/30"
+                    title="Live Demo"
+                  >
+                    <ExternalLink className="w-6 h-6" />
+                  </a>
+                </div>
+                <p className="text-green-100 mb-8 leading-relaxed relative z-10">
+                  Comprehensive bug tracking system for managing and monitoring software issues. Features include project management, issue tracking, and real-time collaboration.
+                </p>
+                <div className="flex flex-wrap gap-3 relative z-10">
+                  <Badge className="bg-white/20 text-white px-4 py-2">React</Badge>
+                  <Badge className="bg-white/20 text-white px-4 py-2">Node.js</Badge>
+                  <Badge className="bg-white/20 text-white px-4 py-2">MongoDB</Badge>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
